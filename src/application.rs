@@ -70,4 +70,24 @@ impl Application {
             app_type
         }
     }
+
+    pub fn rdn(&self) -> &ApplicationRDN {
+        &self.rdn
+    }
+
+    pub fn id(&self) -> uuid::Uuid {
+        self.id
+    }
+
+    pub fn homepage(&self) -> Option<&url::Url> {
+        self.homepage.as_ref()
+    }
+
+    pub fn description(&self) -> Option<&String> {
+        self.description.as_ref()
+    }
+
+    pub fn app_type(&self) -> Option<&ApplicationsType> {
+        self.app_type.as_ref()
+    }
 }
