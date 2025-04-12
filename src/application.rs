@@ -1,7 +1,4 @@
-use std::path::PathBuf;
-
 use serde::{Serialize, Deserialize};
-use crate::filesystem::FsInt;
 
 #[derive(Debug, Copy, Clone, PartialEq, Ord, PartialOrd, Eq, Hash, Serialize, Deserialize)]
 pub enum ApplicationErrors {
@@ -57,15 +54,17 @@ impl ApplicationRDN {
 pub struct Application {
     #[serde(skip)]
     rdn: ApplicationRDN,
+    id: uuid::Uuid,
     homepage: Option<url::Url>,
     description: Option<String>,
     app_type: Option<ApplicationsType>
 }
 
 impl Application {
-    pub fn new(rdn: ApplicationRDN, homepage: Option<url::Url>, description: Option<String>, app_type: Option<ApplicationsType>) -> Application {
+    pub fn new(rdn: ApplicationRDN, id: uuid::Uuid, homepage: Option<url::Url>, description: Option<String>, app_type: Option<ApplicationsType>) -> Application {
         Application {
             rdn,
+            id,
             homepage,
             description,
             app_type
